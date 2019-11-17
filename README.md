@@ -4,4 +4,4 @@ This python module includes 4 different models and supports 3 different types of
 
 The class mainly uses HyperSpy (a multi-dimensional data analysis toolbox) as the underlying python module to investigate the spectrum image and the estimation of parameter shifts (e.g. peak center, full-width-half-maxima, peak intensity, ...). It supports error estimations by spatial variance and fitting estimations during minimization using weighted Least-Squared, a MP-Fit approach or a Maximum-Likelyhood minimization to fit the low-loss model to the data of the spectrum image.
 
-For further information on all functions and parameters used, see (http://hyperspy.org/hyperspy-doc/current/index.html) as well as (https://www.scipy.org/docs.html) and (https://docs.dask.org/en/latest/) which i want to say a special thank you and i want to recommend their work strongly! 
+For further information on all functions and parameters used, see (http://hyperspy.org/hyperspy-doc/current/index.html - doi:10.5281/zenodo.3396791) as well as (https://www.scipy.org/docs.html) and (https://docs.dask.org/en/latest/) which i want to say a special thank you and i want to recommend their work strongly! 
