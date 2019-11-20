@@ -4286,7 +4286,7 @@ class EELS_image_fit(object):
                                              None,
                                              np.full(polygradn, 0.),
                                              None,
-                                             show
+                                             show=show
                                             ) 
 
                         key_scan = {self.linescans[param_title].metadata.General.title : fig}
@@ -4320,7 +4320,7 @@ class EELS_image_fit(object):
                                  None,
                                  np.full(polygradn, 0.),
                                  None,
-                                 show
+                                 show=show
                                 ) 
 
             key_scan = {self.linescans[res[0]].metadata.General.title : fig}
@@ -4344,7 +4344,7 @@ class EELS_image_fit(object):
                                  None,
                                  np.full(polygradn, 0.),
                                  None,
-                                 show
+                                 show=show
                                 ) 
 
             key_scan = {self.linescans[thickness].metadata.General.title : fig}
@@ -4375,7 +4375,7 @@ class EELS_image_fit(object):
                                          None,
                                          np.full(polygradn, 0.),
                                          None,
-                                         show
+                                         show=show
                                         ) 
 
                     key_scan = {self.linescans[param_title].metadata.General.title : fig}
