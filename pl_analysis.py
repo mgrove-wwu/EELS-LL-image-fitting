@@ -81,7 +81,7 @@ mpl.rcParams.update(nice_fonts)
 # 
 # ### also includes sub routines that can be used but might lead to unexpected crashes
 
-# In[1]:
+# In[2]:
 
 
 # Class shall be used to map shear-transformation-zones for an image to visualize 
@@ -4830,7 +4830,7 @@ class EELS_image_fit(object):
                 peaks_neg = self.arrange_peaks(peaks_negative,is_negative=True)
                 peaks_result = np.concatenate((peaks_pos, peaks_neg), axis=0)
             
-            result = self.check_peaks(peaks_result, max_pos, scale, offset, sensitivity)
+            result = self.check_peaks(peaks_result, position, max_pos, scale, offset, sensitivity)
 
             if ((result == np.array([0.,0.,1.])).all()):
                 print('The parameter shifts found do not match expected ranges for gaussian estimation.'
@@ -4992,51 +4992,41 @@ class EELS_image_fit(object):
         return popt_all, pcov_all
                         
         
-    def check_peaks(self, peaks, max_pos, scale, offset, sensitivity):
+    def check_peaks(self, peaks, position, max_pos, scale, offset, sensitivity):
         
         #estimate parameter shifts due to shear band influence
         def func_gaus(x, x0, height, sigma):
             return height * np.exp(- 1/(2 * sigma**2) * (x - x0)**2)
         
-        results = []
+        results  = []
         peak_old = np.array([0.,0.,1.])
+        minimum  = np.array([])
         for peak in list(peaks):
             
+            minimum = np.append(minimum, np.array([peak[1]]))
             if (not np.isnan(peak).any()):
 
-                if (abs(peak[0]+peak[2]) < max_pos and abs(peak[0]-peak[2]) > offset):
-                    print('First first check')
-                    # filter the most dominant peak by area
-                    int_new = integrate.quad(lambda x: func_gaus(x,*peak), offset, max_pos)[0]
-                    int_old = integrate.quad(lambda x: func_gaus(x,*peak_old), offset, max_pos)[0]
-
-                    if (abs(int_new) > abs(int_old)):
-                        if (abs(peak[2]) > abs(scale * sensitivity) and abs(peak[2]) > abs(peak_old[2])):
-                            print('First third check')
-                            if (abs(peak[1]) > abs(peak_old[1])):
-                                print('First all check')
-                                results.append(peak)
-                                peak_old = peak
-                                print('peak accepted:', peak)
+                if (peak[0]+abs(peak[2]) < max_pos and peak[0]-abs(peak[2]) > offset):
+                    
+                    if (abs(peak[1]) >= np.nanmin(abs(minimum))):
+                        
+                        if (position < peak[1]+2*abs(peak[2]) and position > peak[1] - 2*abs(peak[2])):
+                            results.append(peak)
+                            print('peak accepted:', peak)
             
             else:
-                
-                sigma = abs(scale * sensitivity)
-                if (abs(peak[0]+sigma) < max_pos and abs(peak[0]-sigma) > offset):
-                    print('Second first check')
-                    # filter the most dominant peak by area
-                    int_new = integrate.quad(lambda x: func_gaus(x,*peak), offset, max_pos)[0]
-                    int_old = integrate.quad(lambda x: func_gaus(x,*peak_old), offset, max_pos)[0]
 
-                    if (abs(int_new) > abs(int_old)):
-                        if (abs(peak[1]) > abs(peak_old[1])):
-                            print('Second all check')
+                sigma = abs(scale * sensitivity)
+                if (peak[0]+abs(sigma) < max_pos and peak[0]-abs(sigma) > offset):
+                    
+                    if (abs(peak[1]) >= np.nanmin(abs(minimum))):
+
+                        if (position < peak[1]+2*abs(peak[2]) and position > peak[1] - 2*abs(peak[2])):
                             results.append((peak[0], peak[1], sigma))
-                            peak_old = (peak[0], peak[1], sigma)
                             print('peak accepted after ignoring bad sigma:', peak)
 
-        print(results)
         if (results != []):
+            
             integral = np.empty(len(results))
             for i in range(len(results)):
                 integral[i] = (integrate.quad(lambda x: func_gaus(x,*results[i]), offset, max_pos)[0])
@@ -5044,12 +5034,10 @@ class EELS_image_fit(object):
             result = results[np.where(integral==np.max(integral))[0][0]]
 
             peak_result = np.array([result[0],result[1],result[2]], dtype=float)
-            print(result)
             
         else:
             peak_result = np.array([0.,0.,1.])
             
-        print(peak_result)
         return peak_result
     
     def cross_correlation(self,
