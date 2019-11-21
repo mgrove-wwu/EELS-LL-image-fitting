@@ -5010,7 +5010,7 @@ class EELS_image_fit(object):
                     
                     if (abs(peak[1]) >= np.nanmin(abs(minimum))):
                         
-                        if (position < peak[1]+2*abs(peak[2]) and position > peak[1] - 2*abs(peak[2])):
+                        if (position < peak[0] + 4*abs(peak[2]) and position > peak[0] - 4*abs(peak[2])):
                             results.append(peak)
                             print('peak accepted:', peak)
             
@@ -5021,7 +5021,7 @@ class EELS_image_fit(object):
                     
                     if (abs(peak[1]) >= np.nanmin(abs(minimum))):
 
-                        if (position < peak[1]+2*abs(peak[2]) and position > peak[1] - 2*abs(peak[2])):
+                        if (position < peak[0] + 4*abs(sigma) and position > peak[0] - 4*abs(sigma)):
                             results.append((peak[0], peak[1], sigma))
                             print('peak accepted after ignoring bad sigma:', peak)
 
