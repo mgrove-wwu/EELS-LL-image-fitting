@@ -3550,7 +3550,7 @@ class EELS_image_fit(object):
                    )
             
             fname = os.getcwd() + os.sep + self.dir_list[0] + os.sep + dir_fname[title]
-            self.param_dict[title].metadata.General.title = title
+            self.param_dict[title].metadata.General.title = title.split('-',-1)[0] + '\n' + title.split('-',-1)[1]
             self.param_dict[title].plot(scalebar_color='black', 
                                         cmap=cmap, 
                                         centre_colormap=False,
