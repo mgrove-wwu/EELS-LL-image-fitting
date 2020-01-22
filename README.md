@@ -19,8 +19,8 @@ conda env create -f /path/to/environment.yml
 Downloading the environment.yml file and executing the command may take some time, which can be filled by a coffee break. ;)
 
 After installation, the execution of the python class just takes two further steps:
-The first step is to download the EELS fitting class `pl_analysis.py` and the corresponding exemplatory evaluation script `Notebook_for_pl_analysis.ipynb` to a path of your decision. For the full analysis jupyter notebook was used, which will be recommended here specifically to make the execution process user friendly. It is automatically included in the Hyperspy-environment installed from the `environment.yml` file.
-The second step is to start the jupyter notebook in your browser and to navigate to the path to your chosen folder for  `pl_analysis.py` and start the first cell of  `Notebook_for_pl_analysis.ipynb` which should be located in the same path.
+The first step is to download the EELS fitting class `pl_analysis.py` and the corresponding exemplatory evaluation script `Notebook_for_pl_analysis.ipynb`/`Evaluation.ipynb` to a path of your decision. For the full analysis jupyter notebook was used, which will be recommended here specifically to make the execution process user friendly. It is automatically included in the Hyperspy-environment installed from the `environment.yml` file.
+The second step is to start the jupyter notebook in your browser and to navigate to the path to your chosen folder for  `pl_analysis.py` and start the first cell of  `Notebook_for_pl_analysis.ipynb`/`Evaluation.ipynb` which should be located in the same path.
 
 Further navigation is not required as it was automated by the python class.
 
