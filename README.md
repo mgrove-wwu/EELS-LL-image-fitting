@@ -8,7 +8,7 @@ For further information on all functions and parameters used, see (http://hypers
 
 To install the environment used for the eif-class developed for hyperspy, the environment file is added to make the installation process user friendly and minimize possible mistakes during the installation process. For more information on anaconda see: https://docs.conda.io/projects/conda/en/latest/user-guide/
 
-For the usage of the environment.yml the anaconda management system for python environments is recommended. You can download anaconda from directly from their homepage: https://www.anaconda.com/distribution/?gclid=EAIaIQobChMI8uCGiJ6X5wIViK3tCh3XhgvyEAAYASAAEgKc9vD_BwE#download-section
+For the usage of the environment.yml the anaconda management system for python environments is recommended. You can download anaconda from directly from their homepage (Linux, Windows and macOS supported): https://www.anaconda.com/distribution/?gclid=EAIaIQobChMI8uCGiJ6X5wIViK3tCh3XhgvyEAAYASAAEgKc9vD_BwE#download-section
 
 The steps to install the environment from the `environment.yml` file are as follows:
 
