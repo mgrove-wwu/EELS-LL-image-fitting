@@ -5,3 +5,23 @@ This python module includes 4 different models and supports 3 different types of
 The class mainly uses HyperSpy (a multi-dimensional data analysis toolbox) as the underlying python module to investigate the spectrum image and the estimation of parameter shifts (e.g. peak center, full-width-half-maxima, peak intensity, ...). It supports error estimations by spatial variance and fitting estimations during minimization using weighted Least-Squared, a MP-Fit approach or a Maximum-Likelyhood minimization to fit the low-loss model to the data of the spectrum image.
 
 For further information on all functions and parameters used, see (http://hyperspy.org/hyperspy-doc/current/index.html - doi:10.5281/zenodo.3396791) as well as (https://www.scipy.org/docs.html) and (https://docs.dask.org/en/latest/) which i want to say a special thank you and i want to recommend their work strongly! 
+
+To install the environment used for the eif-class developed for hyperspy, the environment file is added to make the installation process user friendly and minimize possible mistakes during the installation process. For more information on anaconda see: https://docs.conda.io/projects/conda/en/latest/user-guide/
+
+For the usage of the environment.yml the anaconda management system for python environments is recommended. You can download anaconda from directly from their homepage: https://www.anaconda.com/distribution/?gclid=EAIaIQobChMI8uCGiJ6X5wIViK3tCh3XhgvyEAAYASAAEgKc9vD_BwE#download-section
+
+The steps to install the environment from the `environment.yml` file are as follows:
+
+```
+conda env create -f /path/to/environment.yml
+```
+
+Downloading the environment.yml file and executing the command may take some time, which can be filled by a coffee break. ;)
+
+After installation, the execution of the python class just takes two further steps:
+The first step is to download the EELS fitting class `pl_analysis.py` and the corresponding exemplatory evaluation script `Notebook_for_pl_analysis.ipynb` to a path of your decision. For the full analysis jupyter notebook was used, which will be recommended here specifically to make the execution process user friendly. It is automatically included in the Hyperspy-environment installed from the `environment.yml` file.
+The second step is to start the jupyter notebook in your browser and to navigate to the path to your chosen folder for  `pl_analysis.py` and start the first cell of  `Notebook_for_pl_analysis.ipynb` which should be located in the same path.
+
+Further navigation is not required as it was automated by the python class.
+
+If any help is needed or any issue is occuring, the issues forum of github under the link https://github.com/mgrove-wwu/EELS-LL-image-fitting/issues can be used to inform me for bug hunting and further support.
