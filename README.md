@@ -23,7 +23,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/mgrove-wwu/EELS-LL-image-fitting/">
-    <img src="EELS-LL-chartflow-aligned.png" alt="Logo" width="1024" height="860">
+    <img src="EELS-LL-chartflow-aligned.png" alt="Logo" width="1024" height="680">
   </a>
 
   <h3 align="center">EELS Low-Loss image fitting</h3>
