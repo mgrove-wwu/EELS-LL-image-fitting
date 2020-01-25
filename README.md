@@ -52,7 +52,6 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
@@ -76,6 +75,8 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 * [Scipy](https://scipy.org)
 * [Numpy](https://numpy.org)
 * [Dask](https://dask.org)
+
+## Getting started
 
 ### Prerequisites
 
