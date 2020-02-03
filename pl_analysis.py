@@ -30,8 +30,6 @@ import cv2
 import sys
 import os
 
-from getch import getch, pause
-
 from sympy import Symbol
 
 from joblib import Parallel, delayed
