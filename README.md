@@ -80,7 +80,20 @@ To install the environment used for the eif-class developed for hyperspy, the en
 
 For the usage of the environment.yml the anaconda management system for python environments is recommended. You can download anaconda from directly from their homepage (Linux, Windows and macOS supported): https://www.anaconda.com/distribution/?gclid=EAIaIQobChMI8uCGiJ6X5wIViK3tCh3XhgvyEAAYASAAEgKc9vD_BwE#download-section
 
-The steps to install the environment from the `environment.yml` file for anaconda are as follows:
+If a fresh anaconda distribution is installed the following 6 commands will create an environment called `HyperSpy` and install all required modules inside the activated environment for the developed python class:
+
+```
+conda create --name HyperSpy
+conda activate HyperSpy
+conda install hyperspy[all] -c conda-forge
+
+conda install mayavi -c conda-forge
+conda install opencv -c conda-forge 
+conda install mendeleev -c conda-forge  
+```
+
+As an alternative way to install the required python environment can be done from a single file.
+The step to install the environment from the `environment.yml` file for anaconda is as follows:
 
 ```
 conda env create -f /path/to/environment.yml
