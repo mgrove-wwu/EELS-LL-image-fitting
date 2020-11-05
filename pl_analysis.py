@@ -59,7 +59,7 @@ mpl.rcParams['text.latex.unicode'] = True
 mpl.rcParams['figure.figsize'] = 10, 5
 mpl.rcParams['figure.dpi'] = 200
 
-plt.style.use('seaborn-whitegrid')
+plt.style.use('seaborn')
 nice_fonts = {
         # Use LaTeX to write all text
         "text.usetex": True,
@@ -2409,7 +2409,7 @@ class EELS_image_fit(object):
         emax  = self.FPP_Emax 
         fwhm  = self.FPP_FWHM
         
-        Ep_q0 = ( emax ** 2 - (fwhm / 2) ** 2 ) ** 0.5
+        Ep_q0 = ( emax ** 2 + (fwhm / 2) ** 2 ) ** 0.5
         
         dEp_demax = emax * 2 / ( emax ** 2 * 4 + 
                                 fwhm ** 2 
@@ -2477,7 +2477,7 @@ class EELS_image_fit(object):
                 field = 'values'
             )
 
-        self.Ep_q0      = ( self.FPP_Emax**2 - (self.FPP_FWHM / 2)**2 )**0.5
+        self.Ep_q0      = ( self.FPP_Emax**2 + (self.FPP_FWHM / 2)**2 )**0.5
         
     
     def std_maps_drude(self):
@@ -2614,7 +2614,7 @@ class EELS_image_fit(object):
             )
         
 
-        self.Ep_q0      = ( self.FPP_Emax**2 - (self.FPP_FWHM / 2)**2 )**0.5
+        self.Ep_q0      = ( self.FPP_Emax**2 + (self.FPP_FWHM / 2)**2 )**0.5
     
     
     def std_maps_lorentzian(self):
@@ -2744,7 +2744,7 @@ class EELS_image_fit(object):
             )
         
 
-        self.Ep_q0      = ( self.FPP_Emax**2 - (self.FPP_FWHM / 2)**2 )**0.5
+        self.Ep_q0      = ( self.FPP_Emax**2 + (self.FPP_FWHM / 2)**2 )**0.5
         
     
     def std_maps_gaussian(self):
@@ -2886,7 +2886,7 @@ class EELS_image_fit(object):
                 field = 'values'
             )
 
-        self.Ep_q0      = ( self.FPP_Emax**2 - (self.FPP_FWHM / 2)**2 )**0.5
+        self.Ep_q0      = ( self.FPP_Emax**2 + (self.FPP_FWHM / 2)**2 )**0.5
         
     
     def std_maps_voigt(self):
@@ -3942,10 +3942,17 @@ class EELS_image_fit(object):
                                             linewidth=scale
                                            )
 
-                #filter zeros and set zero std values to mean std by spatial std analysis
-                rotated_line_fstd = line_rot(np.sqrt(param_map.metadata.Signal.Noise_properties.variance),
-                                             order=order
-                                            )
+                if (param_map.metadata.Signal.Noise_properties.variance != None):
+                    #filter zeros and set zero std values to mean std by spatial std analysis
+                    rotated_line_fstd = line_rot(np.sqrt(param_map.metadata.Signal.Noise_properties.variance),
+                                                 order=order
+                                                )
+                else:
+                    Unitary = np.ones(np.shape(self.File))
+                    param_map.metadata.Signal.Noise_properties.variance = hs.signals.Signal1D(Unitary)
+                    rotated_line_fstd = line_rot(np.sqrt(param_map.metadata.Signal.Noise_properties.variance),
+                                                 order=order
+                                                )
 
                 rotated_line_nonzero_fstd = np.where(rotated_line_fstd.data == 0.,
                                                      np.nan,
@@ -5088,4 +5095,5 @@ class EELS_image_fit(object):
         
         mlab.surf(gaus_filt, warp_scale='auto')
         mlab.colorbar(title=colorbar_title, orientation='vertical', label_fmt='%.3f')
+
 
