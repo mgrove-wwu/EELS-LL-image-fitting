@@ -77,7 +77,12 @@ The anaconda distribution is recommended:
 
 ### Installation
 
-To install the environment used for the eif-class developed for hyperspy, the environment file for the anaconda distribution is added to make the installation process user friendly and minimize possible mistakes during the installation process. For more information on anaconda see: https://docs.conda.io/projects/conda/en/latest/user-guide/
+To install use the .whl file in the dist folder to install the pl_analysis module: 
+```
+pip install ./path/to/*.whl
+```
+
+Depreciated: To install the environment used for the eif-class developed for hyperspy, the environment file for the anaconda distribution is added to make the installation process user friendly and minimize possible mistakes during the installation process. For more information on anaconda see: https://docs.conda.io/projects/conda/en/latest/user-guide/
 
 For the usage of the environment.yml the anaconda management system for python environments is recommended. You can download anaconda from directly from their homepage (Linux, Windows and macOS supported): https://www.anaconda.com/distribution/?gclid=EAIaIQobChMI8uCGiJ6X5wIViK3tCh3XhgvyEAAYASAAEgKc9vD_BwE#download-section
 
