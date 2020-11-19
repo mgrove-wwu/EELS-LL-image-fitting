@@ -1,6 +1,0 @@
-README.md
-setup.py
-asdf.egg-info/PKG-INFO
-asdf.egg-info/SOURCES.txt
-asdf.egg-info/dependency_links.txt
-asdf.egg-info/top_level.txt
