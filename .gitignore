@@ -1,0 +1,5 @@
+python_modules_used.txt
+.idea/
+build/**
+build/**/**
+*.egg-info/
